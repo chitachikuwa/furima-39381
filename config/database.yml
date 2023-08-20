@@ -18,7 +18,7 @@ development:
   adapter: mysql2
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost
   database: furima_39381_development
 
 # Warning: The database defined as "test" will be erased and
