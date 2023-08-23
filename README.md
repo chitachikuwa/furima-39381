@@ -5,14 +5,13 @@
 | Column              | Type    | Option      |
 | ------------------- | ------- | ----------- |
 | nickname            | string  | null: false |
+| email               | string  | null: false |
 | encrypted_password  | string  | null: false |
 | last_name           | string  | null: false |
 | first_name          | string  | null: false |
 | kana_last_name      | string  | null: false |
 | kana_first_name     | string  | null: false |
-| birth_year          | integer | null: false |
-| birth_month         | integer | null: false |
-| birth_day           | integer | null: false |
+| birth               | date    | null: false |
 
 ### Association
 - has_many :items
@@ -22,18 +21,17 @@
 
 ## items テーブル
 
-| Column        | Type                | Option                        |
-| ------------- | ------------------- | ----------------------------- |
-| image_url     | varchar             | null: false                   |
-| item_name     | string              | null: false                   |
-| description   | text                | null: false                   |
-| category      | enum                | null: false                   |
-| condition     | enum                | null: false                   |
-| shipping_fee  | enum                | null: false                   |
-| shipping_area | enum                | null: false                   |
-| shipping_days | enum                | null: false                   |
-| price         | integer             | null: false                   |
-| seller_id     | references(user_id) | null: false, foreign_key:true |
+| Column           | Type                | Option                        |
+| ---------------- | ------------------- | ----------------------------- |
+| item_name        | string              | null: false                   |
+| description      | text                | null: false                   |
+| category_id      | integer             | null: false                   |
+| condition_id     | integer             | null: false                   |
+| shipping_fee_id  | integer             | null: false                   |
+| shipping_area_id | integer             | null: false                   |
+| shipping_day_id  | integer             | null: false                   |
+| price            | integer             | null: false                   |
+| user             | references          | null: false, foreign_key:true |
 
 ### Association
 - belongs_to :user
@@ -43,15 +41,15 @@
 
 ## costomers テーブル
 
-| Column      | Type       | Option                        |
-| ----------- | ---------- | ----------------------------- |
-| postal_code | integer    | null: false                   |
-| prefecture  | enum       | null: false                   |
-| city        | string     | null: false                   |
-| address     | string     | null: false                   |
-| building    | string     |                               |
-| phone_num   | integer    | null: false                   |
-| user        | references | null: false, foreign_key:true |
+| Column            | Type       | Option                        |
+| ----------------- | ---------- | ----------------------------- |
+| postal_code       | integer    | null: false                   |
+| shipping_area_id  | integer    | null: false                   |
+| city              | string     | null: false                   |
+| address           | string     | null: false                   |
+| building          | string     |                               |
+| phone_num         | string     | null: false                   |
+| purchases         | references | null: false, foreign_key:true |
  
 
 ### Association
@@ -60,13 +58,13 @@
 - belongs_to :record
 
 
-## records テーブル
+## purchases テーブル
 
-| Column    | Type                |                               |
-| --------- | ------------------- | ----------------------------- |
-| item      | references          | null: false, foreign_key:true |
-| buyer_id  | references(user_id) | null: false, foreign_key:true |
-| seller_id | references(user_id) | null: false, foreign_key:true |
+| Column    | Type       | Option                        |
+| --------- | -----------| ----------------------------- |
+| item      | references | null: false, foreign_key:true |
+| user      | references | null: false, foreign_key:true |
+
 
 
 ### Association
