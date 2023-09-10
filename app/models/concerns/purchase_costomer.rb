@@ -9,4 +9,10 @@ class PurchaseCostomer
     validates :city, presence: true
     validatas :address, presence: true
     validates :phone_num, format: {with: /\A\d{10,11}\z/}
-  end  
+
+  def save
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
+    Purchase.create(postal_code: postal_code, shipping_area_id: shipping_area_id, city: city,
+                    address: address, building: building, phone_num: phone_num)
+  end 
+end  
