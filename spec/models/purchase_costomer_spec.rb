@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PurchaseCostomer, type: :model do
   before do
-     @purchase_costomer = FactoryBot.build(:purchase_costomer)
+     user = FactoryBot.create(:user)
+     item = FactoryBot.create(:item)
+     @purchase_costomer = FactoryBot.build(:purchase_costomer, user_id: user.id , item_id: item.id)
   end
 
   describe '商品が購入できるとき' do
