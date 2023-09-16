@@ -6,7 +6,9 @@ FactoryBot.define do
     city {'港区'}
     address {'港4-5'}
     building {''}
-    phone_num {'09012345678'} 
+    phone_num { '09012345678' }
+    user_id { 1 }
+    item_id { 2 }
     
   end
 end

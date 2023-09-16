@@ -71,7 +71,17 @@ RSpec.describe PurchaseCostomer, type: :model do
           @purchase_costomer.phone_num = 'テスト'
           @purchase_costomer.valid?
           expect(@purchase_costomer.errors.full_messages).to include('Phone num is invalid') 
-        end   
+        end 
+        it 'user_idが紐付いていないと投稿できない' do
+          @purchase_costomer.user_id = nil
+          @purchase_costomer.valid?
+          expect(@purchase_costomer.errors.full_messages).to include("User can't be blank")
+         end
+         it 'item_idが紐付いていないと投稿できない' do
+          @purchase_costomer.item_id = nil
+          @purchase_costomer.valid?
+          expect(@purchase_costomer.errors.full_messages).to include("Item can't be blank")
+         end
       end
     end  
 end
