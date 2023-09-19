@@ -23,10 +23,12 @@ class ItemsController < ApplicationController
 
   def edit
     unless  current_user == @item.user
-      redirect_to root_path      
+      redirect_to root_path  
+      return    
    end
    if  @item.purchase.present?
-     redirect_to root_path     
+     redirect_to root_path    
+     return
    end   
   end  
 
