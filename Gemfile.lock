@@ -335,6 +335,7 @@ DEPENDENCIES
   active_hash
   aws-sdk-s3
   bootsnap (>= 1.4.2)
+  bundler (= 2.4.21)
   byebug
   capybara (>= 2.15)
   devise
